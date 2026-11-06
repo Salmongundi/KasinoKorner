@@ -1,0 +1,201 @@
+
+:root {
+  --bg: #07080a;
+  --ink: #efe8d6;
+  --gold: #f3c34a;
+  --red: #d6262c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, sans-serif;
+  user-select: none;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: pointer;
+}
+
+#panel {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  transform: translateX(-50%);
+  width: min(460px, calc(100% - 16px));
+  padding: 0 6px;
+  font-family: "Permanent Marker", "Marker Felt", cursive;
+  text-shadow: 0 2px 4px #000;
+}
+
+#balrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 38px;
+  margin-bottom: 6px;
+}
+
+#balrow > div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+#bl {
+  color: #bdb6a2;
+  font-size: 13px;
+  letter-spacing: .08em;
+}
+
+#bal {
+  color: var(--gold);
+  font-size: 30px;
+  line-height: 1.05;
+  text-shadow: 0 0 14px rgba(243, 195, 74, .45);
+}
+
+#bal::after {
+  content: " squirts";
+  color: #8d8878;
+  font-size: 15px;
+  letter-spacing: .06em;
+}
+
+.row {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 7px;
+}
+
+#panel button,
+#panel input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 6px;
+  border: 2px solid rgba(233, 226, 208, .8);
+  border-radius: 14px 10px 16px 9px;
+  background: rgba(0, 0, 0, .28);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  text-shadow: 0 2px 3px #000;
+  cursor: pointer;
+}
+
+#panel button:nth-child(even) {
+  border-radius: 9px 16px 10px 14px;
+}
+
+#panel button:hover {
+  border-color: var(--gold);
+}
+
+#panel button:active {
+  transform: scale(.94);
+}
+
+#panel input {
+  flex: 1.7;
+  width: auto;
+  border-color: var(--gold);
+  color: var(--gold);
+  font-size: 20px;
+  text-align: center;
+  cursor: text;
+}
+
+#panel [data-q="25%"],
+#panel [data-q="50%"],
+#panel [data-q="max"] {
+  font-size: 13px;
+}
+
+#panel [data-q="max"] {
+  flex: 1.3;
+  border-color: var(--red);
+  color: #ff7b80;
+}
+
+#picks {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+}
+
+#panel #picks button {
+  height: 42px;
+  font-size: 18px;
+}
+
+#panel button.sel {
+  transform: rotate(-1.5deg);
+  border-color: #ff8a8e;
+  background: var(--red);
+  color: #fff;
+}
+
+#panel #beg {
+  display: none;
+  flex: none;
+  max-width: 55%;
+  height: auto;
+  min-height: 30px;
+  padding: 4px 10px;
+  font-size: 13px;
+  line-height: 1.1;
+}
+
+#msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+#msg.win {
+  color: var(--gold);
+}
+
+#msg.lose {
+  color: #ff7b80;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(-50%);
+  }
+
+  25% {
+    transform: translateX(calc(-50% - 5px));
+  }
+
+  75% {
+    transform: translateX(calc(-50% + 5px));
+  }
+}
+
+.shake {
+  animation: shake .25s;
+}
